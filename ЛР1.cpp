@@ -1,10 +1,8 @@
-﻿#include <iostream>
+#include <iostream>
 #include <iomanip>
 #include <vector>
 
-using namespace std;
-
-double Summa(vector <double> Array)
+double Summa(std::vector<double> Array)
 {
     double Sum = 0;
     for (int i = 0; i < Array.size(); i++)
@@ -14,7 +12,7 @@ double Summa(vector <double> Array)
     return Sum;
 }
 
-double ChangeLast(vector <double> Array)
+double ChangeLast(std::vector<double> Array)
 {
     double Last;
     double Sum = Summa(Array);
@@ -23,7 +21,7 @@ double ChangeLast(vector <double> Array)
     return Last;
 }
 
-double Max(vector <double> Array)
+double Max(std::vector<double> Array)
 {
     double maximum = 0;
     for (int i = 0; i < Array.size(); i++)
@@ -34,7 +32,7 @@ double Max(vector <double> Array)
     return maximum;
 }
 
-double Min(vector <double> Array)
+double Min(std::vector<double> Array)
 {
     double minimum = 5000000;
     for (int i = 0; i < Array.size(); i++)
@@ -45,16 +43,16 @@ double Min(vector <double> Array)
     return minimum;
 }
 
-void Show(vector <double> Array)
+void Show(std::vector<double> Array)
 {
     for (int i = 0; i < Array.size(); i++)
     {
-        cout << fixed << setprecision(3) << Array[i] << " ";
+        std::cout << std::fixed << std::setprecision(3) << Array[i] << " ";
     }
-    cout << endl;
+    std::cout << std::endl;
 }
 
-void Change(vector <double> Array)
+void Change(std::vector<double> Array)
 {
     double Sum = Summa(Array);
     double Last = ChangeLast(Array);
@@ -77,13 +75,13 @@ void Change(vector <double> Array)
     double element;
     while (operation)
     {
-        cin >> operation;
+        std::cin >> operation;
         if (operation == 0)
             break;
         if (operation == 1)
         {
-            cin >> element;
-            cout << "+: " << Array.size() + 1 << endl;
+            std::cin >> element;
+            std::cout << "+: " << Array.size() + 1 << std::endl;
             Array.push_back(element);
             Show(Array);
             double Sum = Summa(Array);
@@ -105,7 +103,7 @@ void Change(vector <double> Array)
 
         if (operation == 2)
         {
-            cout << "-: " << Array.size() - 1 << endl;
+            std::cout << "-: " << Array.size() - 1 << std::endl;
             Array.pop_back();
             Show(Array);
             double Sum = Summa(Array);
@@ -130,18 +128,18 @@ void Change(vector <double> Array)
 int main()
 {
     int n;
-    vector<double> Array;
-    cin >> n;
+    std::vector<double> Array;
+    std::cin >> n;
     double* array = new double[n];
     for (int i = 0; i < n; i++)
     {
-        cin >> array[i];
+        std::cin >> array[i];
     }
     for (int i = 0; i < n; i++)
     {
         Array.push_back(array[i]);
     }
-    cout << n << endl;
+    std::cout << n << std::endl;
     Show(Array);
     Change(Array);
     delete[] array;
